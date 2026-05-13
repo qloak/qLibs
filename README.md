@@ -1,6 +1,6 @@
 # qLibs
 
-Personal library for Minecraft 1.21.1 modding. Fabric + NeoForge via Architectury.
+Personal library for Minecraft 1.21.11 modding. Fabric + NeoForge via Architectury.
 
 ## What's Inside
 
