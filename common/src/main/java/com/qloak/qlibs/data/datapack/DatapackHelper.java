@@ -1,6 +1,6 @@
 package com.qloak.qlibs.data.datapack;
 
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.packs.resources.ResourceManager;
 import org.jetbrains.annotations.NotNull;
@@ -10,11 +10,11 @@ import org.jetbrains.annotations.NotNull;
  */
 public final class DatapackHelper {
 
-    public static boolean resourceExists(@NotNull ResourceManager manager, @NotNull ResourceLocation id) {
+    public static boolean resourceExists(@NotNull ResourceManager manager, @NotNull Identifier id) {
         return manager.getResource(id).isPresent();
     }
 
-    public static boolean reloadableResourceExists(@NotNull MinecraftServer server, @NotNull ResourceLocation id) {
+    public static boolean reloadableResourceExists(@NotNull MinecraftServer server, @NotNull Identifier id) {
         return server.getResourceManager().getResource(id).isPresent();
     }
 

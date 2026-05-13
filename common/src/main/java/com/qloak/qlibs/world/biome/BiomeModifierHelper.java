@@ -25,7 +25,7 @@ public final class BiomeModifierHelper {
 
     public static boolean isOcean(@NotNull Holder<Biome> biome) {
         if (!biome.isBound()) return false;
-        String name = biome.unwrapKey().map(k -> k.location().getPath()).orElse("");
+        String name = biome.unwrapKey().map(k -> k.identifier().getPath()).orElse("");
         return name.contains("ocean");
     }
 

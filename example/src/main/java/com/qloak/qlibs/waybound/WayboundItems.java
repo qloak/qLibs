@@ -4,7 +4,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -23,7 +23,7 @@ public final class WayboundItems {
 
     private static Item register(String name, Item item) {
         return Registry.register(BuiltInRegistries.ITEM,
-                ResourceLocation.fromNamespaceAndPath(WayboundMod.MOD_ID, name), item);
+                Identifier.fromNamespaceAndPath(WayboundMod.MOD_ID, name), item);
     }
 
     public static void init() {

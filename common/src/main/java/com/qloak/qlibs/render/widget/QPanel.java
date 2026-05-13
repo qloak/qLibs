@@ -30,11 +30,10 @@ public class QPanel implements QWidget {
     @Override
     public void render(@NotNull GuiGraphics g, int mx, int my, float delta) {
         g.fill(x, y, x + w, y + h, bg);
-        // push pose so children draw relative to panel origin
-        g.pose().pushPose();
-        g.pose().translate(x, y, 0);
+        g.pose().pushMatrix();
+        g.pose().translate(x, y);
         for (QWidget c : children) c.render(g, mx - x, my - y, delta);
-        g.pose().popPose();
+        g.pose().popMatrix();
     }
 
     @Override public boolean mouseClicked(int mx, int my, int btn) {

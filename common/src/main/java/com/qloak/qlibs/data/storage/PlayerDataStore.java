@@ -31,8 +31,7 @@ public final class PlayerDataStore {
     }
 
     public static long getLong(@NotNull Player player, @NotNull String key, long def) {
-        CompoundTag t = of(player);
-        return t.contains(key, net.minecraft.nbt.Tag.TAG_LONG) ? t.getLong(key) : def;
+        return of(player).getLong(key).orElse(def);
     }
 
     public static void putInt(@NotNull Player player, @NotNull String key, int value) {
@@ -40,8 +39,7 @@ public final class PlayerDataStore {
     }
 
     public static int getInt(@NotNull Player player, @NotNull String key, int def) {
-        CompoundTag t = of(player);
-        return t.contains(key, net.minecraft.nbt.Tag.TAG_INT) ? t.getInt(key) : def;
+        return of(player).getInt(key).orElse(def);
     }
 
     public static void putString(@NotNull Player player, @NotNull String key, @NotNull String value) {
@@ -50,8 +48,7 @@ public final class PlayerDataStore {
 
     @NotNull
     public static String getString(@NotNull Player player, @NotNull String key, @NotNull String def) {
-        CompoundTag t = of(player);
-        return t.contains(key, net.minecraft.nbt.Tag.TAG_STRING) ? t.getString(key) : def;
+        return of(player).getString(key).orElse(def);
     }
 
     public static void clear() { DATA.clear(); }

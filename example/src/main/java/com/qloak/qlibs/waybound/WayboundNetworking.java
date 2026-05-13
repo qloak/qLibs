@@ -10,7 +10,7 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -24,7 +24,7 @@ import org.jetbrains.annotations.NotNull;
 
 public final class WayboundNetworking {
     public static final CustomPacketPayload.Type<TeleportPacket> TYPE = new CustomPacketPayload.Type<>(
-            ResourceLocation.fromNamespaceAndPath(WayboundMod.MOD_ID, "teleport")
+            Identifier.fromNamespaceAndPath(WayboundMod.MOD_ID, "teleport")
     );
     public static final StreamCodec<RegistryFriendlyByteBuf, TeleportPacket> CODEC =
             StreamCodec.unit(new TeleportPacket());
@@ -52,7 +52,7 @@ public final class WayboundNetworking {
             double ty = WayboundItems.WayboundCompass.getY(held);
             double tz = WayboundItems.WayboundCompass.getZ(held);
 
-            ResourceLocation dimRl = ResourceLocation.tryParse(dimStr);
+            Identifier dimRl = Identifier.tryParse(dimStr);
             if (dimRl == null) return;
 
             MinecraftServer srv = sp.getServer();

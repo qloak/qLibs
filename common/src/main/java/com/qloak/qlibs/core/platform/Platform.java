@@ -1,7 +1,7 @@
 package com.qloak.qlibs.core.platform;
 
 import dev.architectury.injectables.annotations.ExpectPlatform;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 public final class Platform {
@@ -44,8 +44,8 @@ public final class Platform {
         throw new AssertionError();
     }
 
-    public static ResourceLocation id(String path) {
-        return ResourceLocation.fromNamespaceAndPath("qlibs", path);
+    public static Identifier id(String path) {
+        return Identifier.fromNamespaceAndPath("qlibs", path);
     }
 
     private Platform() {}

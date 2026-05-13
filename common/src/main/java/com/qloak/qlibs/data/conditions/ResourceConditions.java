@@ -2,7 +2,7 @@ package com.qloak.qlibs.data.conditions;
 
 import com.google.gson.JsonObject;
 import com.qloak.qlibs.core.platform.Platform;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Predicate;

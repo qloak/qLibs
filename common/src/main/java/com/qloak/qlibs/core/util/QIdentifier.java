@@ -1,26 +1,26 @@
 package com.qloak.qlibs.core.util;
 
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * ResourceLocation helpers.
+ * Identifier helpers.
  */
 public final class QIdentifier {
 
     @NotNull
-    public static ResourceLocation of(@NotNull String modId, @NotNull String path) {
-        return ResourceLocation.fromNamespaceAndPath(modId, path);
+    public static Identifier of(@NotNull String modId, @NotNull String path) {
+        return Identifier.fromNamespaceAndPath(modId, path);
     }
 
     @NotNull
-    public static ResourceLocation qlibs(@NotNull String path) {
-        return ResourceLocation.fromNamespaceAndPath("qlibs", path);
+    public static Identifier qlibs(@NotNull String path) {
+        return Identifier.fromNamespaceAndPath("qlibs", path);
     }
 
     @NotNull
-    public static ResourceLocation mc(@NotNull String path) {
-        return ResourceLocation.withDefaultNamespace(path);
+    public static Identifier mc(@NotNull String path) {
+        return Identifier.withDefaultNamespace(path);
     }
 
     private QIdentifier() {}

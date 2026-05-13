@@ -8,7 +8,7 @@ import com.qloak.qlibs.render.widget.QProgressBar;
 import com.qloak.qlibs.data.storage.PlayerDataStore;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
@@ -47,7 +47,7 @@ public final class WayboundHud {
             float prog = 1f;
             if (now - last < cd) prog = (float) (now - last) / (float) cd;
 
-            String name = ResourceLocation.tryParse(dim).getPath();
+            String name = Identifier.tryParse(dim).getPath();
             name = name.substring(0, 1).toUpperCase() + name.substring(1);
 
             QPanel panel = new QPanel(0, 0, 180, 72).background(0xCC000000);
