@@ -37,7 +37,7 @@ public final class WayboundHud {
             double ty = WayboundItems.WayboundCompass.getY(compass);
             double tz = WayboundItems.WayboundCompass.getZ(compass);
 
-            boolean same = p.level().dimension().location().toString().equals(dim);
+            boolean same = p.level().dimension().identifier().toString().equals(dim);
             Vec3 pos = p.position();
             double dist = same ? pos.distanceTo(new Vec3(tx, ty, tz)) : Double.NaN;
 

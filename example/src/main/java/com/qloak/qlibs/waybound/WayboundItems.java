@@ -8,7 +8,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -36,21 +36,21 @@ public final class WayboundItems {
         }
 
         @Override
-        public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level level, @NotNull Player player, @NotNull InteractionHand hand) {
+        public @NotNull InteractionResult use(@NotNull Level level, @NotNull Player player, @NotNull InteractionHand hand) {
             ItemStack stack = player.getItemInHand(hand);
-            if (level.isClientSide) {
+            if (level.isClientSide()) {
                 if (player.isShiftKeyDown()) WayboundNetworking.sendTeleportRequest();
-                return InteractionResultHolder.success(stack);
+                return InteractionResult.SUCCESS;
             }
 
-            if (player.isShiftKeyDown()) return InteractionResultHolder.success(stack);
+            if (player.isShiftKeyDown()) return InteractionResult.SUCCESS;
 
             bind(stack, player);
             player.displayClientMessage(
                     net.minecraft.network.chat.Component.literal("bound!"), true);
             level.playSound(null, player.blockPosition(), SoundEvents.END_PORTAL_FRAME_FILL,
                     SoundSource.PLAYERS, 0.6f, 1.3f);
-            return InteractionResultHolder.success(stack);
+            return InteractionResult.SUCCESS;
         }
 
         @Override public boolean isFoil(@NotNull ItemStack stack) { return isBound(stack); }
@@ -58,7 +58,7 @@ public final class WayboundItems {
         private static void bind(@NotNull ItemStack stack, @NotNull Player player) {
             CompoundTag tag = new CompoundTag();
             Vec3 pos = player.position();
-            tag.putString("dim", player.level().dimension().location().toString());
+            tag.putString("dim", player.level().dimension().identifier().toString());
             tag.putDouble("x", pos.x);
             tag.putDouble("y", pos.y);
             tag.putDouble("z", pos.z);
@@ -72,22 +72,22 @@ public final class WayboundItems {
 
         public static String getDimension(@NotNull ItemStack stack) {
             CustomData d = stack.get(DataComponents.CUSTOM_DATA);
-            return d != null ? d.copyTag().getString("dim") : "";
+            return d != null ? d.copyTag().getStringOr("dim", "") : "";
         }
 
         public static double getX(@NotNull ItemStack stack) {
             CustomData d = stack.get(DataComponents.CUSTOM_DATA);
-            return d != null ? d.copyTag().getDouble("x") : 0;
+            return d != null ? d.copyTag().getDoubleOr("x", 0) : 0;
         }
 
         public static double getY(@NotNull ItemStack stack) {
             CustomData d = stack.get(DataComponents.CUSTOM_DATA);
-            return d != null ? d.copyTag().getDouble("y") : 0;
+            return d != null ? d.copyTag().getDoubleOr("y", 0) : 0;
         }
 
         public static double getZ(@NotNull ItemStack stack) {
             CustomData d = stack.get(DataComponents.CUSTOM_DATA);
-            return d != null ? d.copyTag().getDouble("z") : 0;
+            return d != null ? d.copyTag().getDoubleOr("z", 0) : 0;
         }
     }
 }

@@ -3,7 +3,7 @@ package com.qloak.qlibs.waybound;
 import com.qloak.qlibs.net.QNet;
 import com.qloak.qlibs.net.PacketChannel;
 import com.qloak.qlibs.render.particle.ParticleHelper;
-import com.qloak.qlibs.world.DimensionTeleport;
+import com.qloak.qlibs.world.TeleportHelper;
 import com.qloak.qlibs.data.storage.PlayerDataStore;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -55,7 +55,7 @@ public final class WayboundNetworking {
             Identifier dimRl = Identifier.tryParse(dimStr);
             if (dimRl == null) return;
 
-            MinecraftServer srv = sp.getServer();
+            MinecraftServer srv = sp.level().getServer();
             if (srv == null) return;
 
             ResourceKey<Level> dimKey = ResourceKey.create(Registries.DIMENSION, dimRl);
@@ -89,7 +89,7 @@ public final class WayboundNetworking {
             ParticleHelper.spawnBurst(sp.level(), net.minecraft.core.particles.ParticleTypes.PORTAL,
                     sp.position(), 0.8, 30);
 
-            DimensionTeleport.teleport(sp, target, tx, ty + 0.5, tz, sp.getYRot(), sp.getXRot());
+            TeleportHelper.teleport(sp, target, tx, ty + 0.5, tz, sp.getYRot(), sp.getXRot());
 
             sp.level().playSound(null, sp.blockPosition(), SoundEvents.ENDERMAN_TELEPORT,
                     SoundSource.PLAYERS, 0.8f, 1.0f);
