@@ -1,5 +1,8 @@
 # qLibs Changelog
 
+## 1.0.0+mc1.21.11
+Same feature set as 1.21.1, adapted for Minecraft 1.21.11 / NeoForge 21.11.
+
 ## 1.0.0+mc1.21.1
 
 ### Features
