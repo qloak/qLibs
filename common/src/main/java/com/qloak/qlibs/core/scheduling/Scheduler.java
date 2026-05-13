@@ -10,6 +10,7 @@ import java.util.concurrent.atomic.AtomicLong;
 public final class Scheduler {
     private static final AtomicLong COUNTER = new AtomicLong(0);
     private static final PriorityQueue<Task> TASKS = new PriorityQueue<>();
+    private static long tickCounter = 0;
     private static boolean init = false;
 
     public static void init() {
@@ -25,9 +26,9 @@ public final class Scheduler {
     }
 
     private static void runPending() {
-        long now = System.currentTimeMillis();
+        tickCounter++;
         synchronized (TASKS) {
-            while (!TASKS.isEmpty() && TASKS.peek().at <= now) {
+            while (!TASKS.isEmpty() && TASKS.peek().at <= tickCounter) {
                 Task t = TASKS.poll();
                 if (t == null) continue;
                 try {
@@ -36,25 +37,25 @@ public final class Scheduler {
                     com.qloak.qlibs.QLibs.LOGGER.error("task crashed", e);
                 }
                 if (t.repeat && t.period > 0) {
-                    t.at = now + t.period;
+                    t.at = tickCounter + t.period;
                     TASKS.add(t);
                 }
             }
         }
     }
 
-    public static long schedule(long delayMs, @NotNull Runnable r) {
+    public static long schedule(long delayTicks, @NotNull Runnable r) {
         long id = COUNTER.incrementAndGet();
         synchronized (TASKS) {
-            TASKS.add(new Task(id, System.currentTimeMillis() + delayMs, 0, false, r));
+            TASKS.add(new Task(id, tickCounter + delayTicks, 0, false, r));
         }
         return id;
     }
 
-    public static long scheduleRepeating(long delayMs, long periodMs, @NotNull Runnable r) {
+    public static long scheduleRepeating(long delayTicks, long periodTicks, @NotNull Runnable r) {
         long id = COUNTER.incrementAndGet();
         synchronized (TASKS) {
-            TASKS.add(new Task(id, System.currentTimeMillis() + delayMs, periodMs, true, r));
+            TASKS.add(new Task(id, tickCounter + delayTicks, periodTicks, true, r));
         }
         return id;
     }

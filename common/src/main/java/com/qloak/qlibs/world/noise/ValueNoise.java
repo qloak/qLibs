@@ -1,12 +1,12 @@
 package com.qloak.qlibs.world.noise;
 
 /**
- * Deterministic simplex-like noise for worldgen utilities.
+ * Deterministic hash-based value noise for worldgen utilities.
  */
-public final class SimpleNoise {
+public final class ValueNoise {
     private final long seed;
 
-    public SimpleNoise(long seed) {
+    public ValueNoise(long seed) {
         this.seed = seed;
     }
 
