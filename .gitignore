@@ -1,0 +1,36 @@
+# Gradle
+build/
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+*.launch
+.classpath
+.project
+.settings/
+bin/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Runtime
+run/
+run-data/
+
+# Agent rules (project-specific, not for repo)
+.windsurf/
+
+# Architectury transformer cache
+.architectury-transformer/
+
+# Misc
+*.log
+*.tmp

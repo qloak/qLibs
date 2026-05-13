@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "qlibs",
+  "version": "${version}",
+  "name": "qLibs",
+  "description": "Qloak's Libraries - modular, cross-platform modding utilities.",
+  "authors": ["Qloak"],
+  "contact": {
+    "homepage": "https://github.com/qloak/qlibs",
+    "sources": "https://github.com/qloak/qlibs"
+  },
+  "license": "LGPL-3.0",
+  "icon": "assets/qlibs/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.qloak.qlibs.fabric.QLibsFabric"
+    ],
+    "client": [
+      "com.qloak.qlibs.fabric.QLibsFabricClient"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": ">=1.21",
+    "architectury": ">=13.0.0"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "waybound",
+  "version": "${version}",
+  "name": "Waybound",
+  "description": "A craftable recall compass. Bind a location, then teleport back anytime.",
+  "authors": ["qloak"],
+  "license": "LGPL-3.0",
+  "icon": "assets/waybound/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.qloak.qlibs.waybound.WayboundMod"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": ">=1.21.1",
+    "fabric-api": "*",
+    "qlibs": "*"
+  }
+}

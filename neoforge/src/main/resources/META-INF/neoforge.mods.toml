@@ -1,0 +1,34 @@
+modLoader = "javafml"
+loaderVersion = "[4,)"
+license = "LGPL-3.0"
+issueTrackerURL = "https://github.com/qloak/qlibs/issues"
+
+[[mods]]
+modId = "qlibs"
+version = "${version}"
+displayName = "qLibs"
+description = "Qloak's Libraries - modular, cross-platform modding utilities."
+authors = "Qloak"
+displayURL = "https://github.com/qloak/qlibs"
+logoFile = "assets/qlibs/icon.png"
+
+[[dependencies.qlibs]]
+modId = "neoforge"
+mandatory = true
+versionRange = "[21.0,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.qlibs]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.21,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.qlibs]]
+modId = "architectury"
+mandatory = true
+versionRange = "[13.0.0,)"
+ordering = "AFTER"
+side = "BOTH"
