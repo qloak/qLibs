@@ -14,7 +14,7 @@ public final class PlatformImpl {
     }
 
     public static boolean isDevelopmentEnvironment() {
-        return !FMLLoader.isProduction();
+        return !FMLEnvironment.isProduction();
     }
 
     @NotNull
@@ -30,15 +30,15 @@ public final class PlatformImpl {
     }
 
     public static boolean isClient() {
-        return FMLEnvironment.dist.isClient();
+        return FMLEnvironment.getDist().isClient();
     }
 
     public static boolean isServer() {
-        return FMLEnvironment.dist.isDedicatedServer();
+        return FMLEnvironment.getDist().isDedicatedServer();
     }
 
     @NotNull
     public static java.nio.file.Path getConfigDir() {
-        return net.neoforged.fml.loading.FMLLoader.getGamePath().resolve("config");
+        return FMLLoader.getCurrent().getGameDir().resolve("config");
     }
 }
